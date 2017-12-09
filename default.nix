@@ -12,4 +12,8 @@ stdenv.mkDerivation rec {
     avrlibc
     arduino-core
   ];
+
+  shellHook = ''
+    export PATH="$PATH:${pkgs.arduino-core}/share/arduino/"
+  '';
 }
