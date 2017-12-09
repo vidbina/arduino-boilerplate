@@ -2,10 +2,12 @@ BUILDER=arduino-builder
 MKDIR=mkdir -p
 RM=rm -rf
 
+BUILD_DIR=${PWD}/out
+
 build:
-	${MKDIR} out
+	${MKDIR} ${BUILD_DIR}
 	${BUILDER} \
-		-build-path ${PWD}/out \
+		-build-path ${BUILD_DIR} \
 		-debug-level 10 \
 		-fqbn arduino:avr:leonardo \
 		-hardware ${ARDUINO_PATH}/share/arduino/hardware/ \
@@ -18,6 +20,6 @@ build:
 		Blink.cpp
 
 clean:
-	${RM} out
+	${RM} ${BUILD_DIR}
 
 .PHONY: build clean
