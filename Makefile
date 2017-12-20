@@ -7,12 +7,14 @@ RM=rm -rf
 
 BUILD_DIR=${PWD}/out
 
+ARDUINO_BOARD?=arduino:avr:mega:cpu=atmega2560
+
 build:
 	${MKDIR} ${BUILD_DIR}
 	${ARDUINO-BUILDER} \
 		-build-path ${BUILD_DIR} \
 		-debug-level 10 \
-		-fqbn arduino:avr:leonardo \
+		-fqbn ${ARDUINO_BOARD} \
 		-hardware ${ARDUINO_PATH}/share/arduino/hardware/ \
 		-libraries ${ARDUINO_PATH}/share/arduino/libraries/ \
 		-tools ${ARDUINO_PATH}/share/arduino/tools/ \
